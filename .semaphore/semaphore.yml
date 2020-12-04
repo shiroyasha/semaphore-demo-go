@@ -12,7 +12,7 @@ blocks:
           commands:
             - checkout
             - sem-version go 1.12
-            - go get github.com/lib/pq
+            - retry -n 5 go get github.com/lib/pq
             - go build webServer.go
             - artifact push workflow webServer --force
           parallelism: 50
